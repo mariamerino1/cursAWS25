@@ -20,5 +20,7 @@ services:
       MYSQL_DATABASE: curs
       MYSQL_USER: query
       MYSQL_PASSWORD: cursAWS25.
+    ports:
+      - "3306:3306"              # BBDD accessible des de fora
     volumes:
       - ./db_data:/var/lib/mysql  # bind mount 
