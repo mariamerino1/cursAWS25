@@ -19,7 +19,7 @@ services:
       MYSQL_ROOT_PASSWORD: rootpassword1
       MYSQL_DATABASE: curs
       MYSQL_USER: query
-      MYSQL_PASSWORD: cursAWS25.
+      MYSQL_PASSWORD: cursAWS25
     ports:
       - "3306:3306"              # BBDD accessible des de fora
     volumes:
