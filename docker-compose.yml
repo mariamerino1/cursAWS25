@@ -7,7 +7,7 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./html:/var/www/html
+      - ./html:/var/www/html    # bind mount 
     depends_on:
       - mariadb
 
@@ -21,7 +21,4 @@ services:
       MYSQL_USER: query
       MYSQL_PASSWORD: cursAWS25.
     volumes:
-      - db_data:/var/lib/mysql
-
-volumes:
-  db_data:
+      - ./db_data:/var/lib/mysql  # bind mount 
