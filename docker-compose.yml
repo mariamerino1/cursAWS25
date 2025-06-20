@@ -1,26 +1,33 @@
 version: '3.8'
 
 services:
-  apache:
+  apache-php:
     image: php:8.1-apache
-    container_name: apache
+    container_name: apache-php
+    volumes:
+      - ./html:/var/www/html
     ports:
       - "8080:80"
-    volumes:
-      - ./html:/var/www/html    # bind mount 
     depends_on:
       - mariadb
+    environment:
+      MYSQL_HOST: mariadb
+      MYSQL_USER: query
+      MYSQL_PASSWORD: cursAWS25
+      MYSQL_DATABASE: curs
 
   mariadb:
     image: mariadb:10.5
     container_name: mariadb
     restart: always
+    ports:
+      - "3306:3306"  # Exposa MariaDB al host
     environment:
-      MYSQL_ROOT_PASSWORD: rootpassword1
+      MYSQL_ROOT_PASSWORD: rootpass
       MYSQL_DATABASE: curs
       MYSQL_USER: query
       MYSQL_PASSWORD: cursAWS25
-    ports:
-      - "3306:3306"              # BBDD accessible des de fora
     volumes:
-      - ./db_data:/var/lib/mysql  # bind mount 
+      - ./mariadb_data:/var/lib/mysql  # Bind mount
+
+volumes: {}
