@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  apache:
+    image: php:8.1-apache
+    container_name: apache
+    ports:
+      - "8080:80"
+    volumes:
+      - ./html:/var/www/html
+    depends_on:
+      - mariadb
+
+  mariadb:
+    image: mariadb:10.5
+    container_name: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword1
+      MYSQL_DATABASE: curs
+      MYSQL_USER: query
+      MYSQL_PASSWORD: cursAWS25.
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
