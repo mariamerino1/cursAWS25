@@ -16,7 +16,7 @@ services:
       - ./mariadb_data:/var/lib/mysql
 
   apache-php:
-    image: php:8.1-apache
+    build: ./html  # en lloc de "image: php:8.1-apache"
     container_name: apache-php
     restart: always
     volumes:
